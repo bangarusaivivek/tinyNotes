@@ -14,7 +14,7 @@ const overview = document.getElementById("overviewContainer")
 const data = document.getElementById("dataContainer")
 const addButton = document.getElementById("addButton")
 const removeButton = document.getElementById("removeButton")
-const noteList = document.querySelectorAll(".tinyNote")
+
 
 
 addButton.addEventListener("click",createNote)
@@ -41,8 +41,12 @@ function createNote(e){
     tinyNote.className = "tinyNote"
     tinyNote.setAttribute("id",item.id)
     tinyNote.setAttribute("onclick","updateNotes(this.id)")
-
+    if(overview.hasChildNodes()){
+        overview.childNodes[0].classList.remove("highlight1")
+    }
+    
     overview.insertBefore(tinyNote,overview.childNodes[0])
+    overview.childNodes[0].classList.add("highlight1")
     document.querySelector(".title").addEventListener("input",(e)=>{
         item.title = e.target.value
         document.getElementById(item.id).innerText = e.target.value
@@ -62,6 +66,17 @@ function updateNotes(id){
     data.removeChild(data.childNodes[0])
     data.removeChild(data.childNodes[0])
 
+    removeHighlight()
+
+    // (function(){
+    //     let noteList = document.querySelectorAll(".tinyNote")
+    //     console.log("i m IIFE")
+    //     noteList.forEach((note)=>{
+    //         note.classList.remove("highlight")
+    //     })
+    // })()
+    
+    document.getElementById(id).classList.add("highlight")
     noteCreator("title1","contentBody1")
 
     let newId = parseInt(id)
@@ -83,6 +98,7 @@ function updateNotes(id){
         }
     })
 }
+
 
 function removeNote(e){
     if(items.length == 0){
@@ -139,4 +155,12 @@ function removeNote(e){
     
 
 
+}
+
+function removeHighlight(){
+    let noteList = document.querySelectorAll(".tinyNote")
+    console.log(noteList)
+    noteList.forEach((note)=>{
+        note.classList.remove("highlight")
+    })
 }
