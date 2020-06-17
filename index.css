@@ -152,6 +152,15 @@ body{
     cursor: pointer;
 }
 
-.tinyNote:active{
+.highlight1{
+    margin: 0;
+    padding-left: 15px;
+    background-color: #E5E8E8;
+    border: none;
+}
+.highlight{
+    margin: 0;
+    padding-left: 15px;
     background-color: yellow;
+    border: none;
 }
