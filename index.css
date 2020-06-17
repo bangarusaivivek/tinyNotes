@@ -1,0 +1,157 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Itim', cursive;
+}
+
+body{
+    height: 100vh;
+    width:100vw;
+    margin:0;
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container{
+    height: 600px;
+    width: 1000px;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+}
+
+.navbar{
+    height: 40px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #D7DBDD ;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.firstnav{
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+   
+}
+
+.secondnav{
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.thirdnav{
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.add-button{
+    height: 25px;
+    width: 40px;
+    background-color: #FDFEFE;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+.remove-button{
+    height: 25px;
+    width: 40px;
+    background-color: #FDFEFE;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+.button{
+    height: 25px;
+    width: 40px;
+    background-color: #FBFCFC;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.search-bar{
+    height: 25px;
+    width: 150px;
+    border-radius: 5px;
+    border: none;
+}
+.text-container{
+    height: 90%;
+    background-color: #F8F9F9 ;
+    display: flex;
+    
+}
+
+.overview-container{
+    width: 25%;
+    border-right: 1px solid black;
+    overflow-y: scroll;
+}
+.data-container{
+    width: 75%;
+
+}
+
+.file-container{
+    height: 50px;
+    border: 1px solid black;
+}
+
+
+
+.title{
+    width: 100%;
+    height: 10%;
+    border: none;
+    padding-left: 10px;
+    background-color: #F8F9F9 ;
+    font-size: 1.5rem;
+    font-family: 'Staatliches', cursive;
+}
+.title1{
+    width: 100%;
+    height: 10%;
+    border: none;
+    padding-left: 10px;
+    background-color: #F8F9F9 ;
+    font-size: 1.5rem;
+    font-family: 'Staatliches', cursive;
+}
+.contentBody{
+    width: 100%;
+    height: 90%;
+    border: none;
+    padding-left: 10px;
+    background-color: #F8F9F9 ;
+    font-size: 1.2rem;
+   
+}
+.contentBody1{
+    width: 100%;
+    height: 90%;
+    border: none;
+    padding-left: 10px;
+    background-color: #F8F9F9 ;
+    font-size: 1.2rem;
+    
+}
+.tinyNote{
+    height: 10%;
+    margin-left: 10px;
+    padding-top: 5px;
+    padding-left: 5px;
+    font-size: 1.3rem;
+    /* border-left: 1px solid black; */
+    border-bottom: 1px solid black;
+    cursor: pointer;
+}
+
+.tinyNote:active{
+    background-color: yellow;
+}
