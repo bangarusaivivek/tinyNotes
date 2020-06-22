@@ -14,7 +14,7 @@ const overview = document.getElementById("overviewContainer")
 const data = document.getElementById("dataContainer")
 const addButton = document.getElementById("addButton")
 const removeButton = document.getElementById("removeButton")
-
+const searchBar = document.querySelector(".search-bar")
 
 
 addButton.addEventListener("click",createNote)
@@ -117,7 +117,7 @@ function removeNote(e){
         }
 
     })
-    if(items.length === 0){
+    if(items.length === 0){  
         data.removeChild(data.childNodes[0])
         data.removeChild(data.childNodes[0])
     }
@@ -164,3 +164,17 @@ function removeHighlight(){
         note.classList.remove("highlight")
     })
 }
+
+searchBar.addEventListener("input",(e)=>{
+    console.log(searchBar.value)
+    //console.log(e.target.value)
+
+    if(items.length == 0){
+        return
+    }
+    let searchInput = items.filter((data)=>{
+        return data.content.includes(`${e.target.value}`)
+    })
+    console.log(searchInput)
+
+})
