@@ -8,7 +8,8 @@ function newItem(id,title,content){
     this.content = content;
 
 }
-
+// document.querySelector(".button1").removeChild(document.querySelector(".button1").childNodes[0])
+// console.log(document.querySelector(".button1").hasChildNodes())
 const overview = document.getElementById("overviewContainer")
 
 const data = document.getElementById("dataContainer")
@@ -16,7 +17,7 @@ const addButton = document.getElementById("addButton")
 const removeButton = document.getElementById("removeButton")
 const searchBar = document.querySelector(".search-bar")
 
-
+// console.log(searchBar.value)
 addButton.addEventListener("click",createNote)
 removeButton.addEventListener("click",removeNote)
 const title = document.querySelector(".title")
@@ -28,8 +29,11 @@ function createNote(e){
     e.preventDefault()
     e.stopPropagation()
     if(items.length != 0){
-        data.removeChild(data.childNodes[0])
-        data.removeChild(data.childNodes[0])
+
+        while(data.hasChildNodes()){
+        // console.log(overview.hasChildNodes())
+            data.removeChild(data.childNodes[0])   
+        }
         
     }
     
@@ -63,8 +67,12 @@ function createNote(e){
 
 
 function updateNotes(id){
-    data.removeChild(data.childNodes[0])
-    data.removeChild(data.childNodes[0])
+    console.log(overview.hasChildNodes())
+    while(data.hasChildNodes()){
+        // console.log(overview.hasChildNodes())
+        data.removeChild(data.childNodes[0])   
+    }
+    
 
     removeHighlight()
 
@@ -101,8 +109,11 @@ function updateNotes(id){
 
 
 function removeNote(e){
+    console.log(items)
     if(items.length == 0){
-        
+        // while(data.hasChildNodes()){
+        //     data.removeChild(data.childNodes[0])
+        // }
         return
     }
     let getId = data.childNodes[0].id
@@ -118,8 +129,10 @@ function removeNote(e){
 
     })
     if(items.length === 0){  
-        data.removeChild(data.childNodes[0])
-        data.removeChild(data.childNodes[0])
+        while(data.hasChildNodes()){
+            // console.log(overview.hasChildNodes())
+            data.removeChild(data.childNodes[0])   
+        }
     }
     
     else if(i === items.length){
@@ -169,12 +182,80 @@ searchBar.addEventListener("input",(e)=>{
     console.log(searchBar.value)
     //console.log(e.target.value)
 
-    if(items.length == 0){
-        return
-    }
     let searchInput = items.filter((data)=>{
         return data.content.includes(`${e.target.value}`)
     })
     console.log(searchInput)
+    
+    if(searchBar.value !== "" && searchInput.length === 0){
+        // document.querySelector(".title").classList.add("hidden")
+        // document.querySelector(".contentBody").classList.add("hidden")
+        document.querySelector(".data-container").classList.add("displayHeading")
+        document.querySelectorAll(".tinyNote").forEach((note)=>{
+            note.classList.add("hidden")
+        })
+        document.querySelector(".data-container").innerText = "No Notes Available"
+
+
+    }
+    else if(searchBar.value === ""){
+        document.querySelector(".data-container").classList.remove("displayHeading")
+        document.querySelectorAll(".tinyNote").forEach((note)=>{
+            note.classList.remove("hidden")
+        })
+        document.querySelector(".data-container").innerText = ""
+        noteCreator("title","contentBody")
+        let getId = overview.childNodes[0].id
+        // console.log(data,typeof data)
+        let i;
+        items.forEach((item,index)=>{
+            if(item.id == getId){
+                i = index
+
+            }
+        })
+        
+        document.querySelector(".title").value = items[i].title
+        document.querySelector(".contentBody").value = items[i].content
+        document.querySelector(".title").addEventListener("input",(e)=>{
+        
+            items[i].title = e.target.value
+            document.getElementById(items[i].id).innerText = e.target.value
+        })
+        document.querySelector(".contentBody").addEventListener("input",(e) =>{
+            items[i].content = e.target.value
+        })
+    }
+
+    else if(searchInput.length > 0){
+        console.log("i am 3rd one")
+        document.querySelector(".data-container").classList.remove("displayHeading")
+        document.querySelectorAll(".tinyNote").forEach((note)=>{
+            note.classList.remove("hidden")
+        })
+        let allId = searchInput.map((item)=>{
+            return item.id
+        })
+        console.log(typeof allId[0])
+        document.querySelectorAll(".tinyNote").forEach((note)=>{
+            if(!allId.includes(parseInt(note.id))){
+                note.classList.add("hidden")
+            }
+            
+        })
+        // searchInput.forEach((item)=>{
+        //     document.querySelectorAll(".tinyNote").forEach((el)=>{
+        //         if(el.id === item.id){
+        //             el.classList.remove("hidden")
+        //         }
+        //     })
+            
+        // })
+    }
+    
 
 })
+
+// function DataLoader(){
+
+// }
