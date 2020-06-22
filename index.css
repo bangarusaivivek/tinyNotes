@@ -95,9 +95,24 @@ body{
 }
 .data-container{
     width: 75%;
+    /* display:flex;
+    justify-content: center;
+    align-items: center; */
 
 }
+.data-container.displayHeading{
+    width: 75%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    color: #D7DBDD;
+    
 
+}
+.displaynote{
+    display: none;
+}
 .file-container{
     height: 50px;
     border: 1px solid black;
@@ -163,4 +178,14 @@ body{
     padding-left: 15px;
     background-color: yellow;
     border: none;
+}
+
+.overview-hidden{
+    display: none;
+}
+.search-hidden{
+    display: none;
+}
+.hidden{
+    display: none;
 }
