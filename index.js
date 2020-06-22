@@ -199,11 +199,18 @@ searchBar.addEventListener("input",(e)=>{
 
     }
     else if(searchBar.value === ""){
+        
         document.querySelector(".data-container").classList.remove("displayHeading")
         document.querySelectorAll(".tinyNote").forEach((note)=>{
             note.classList.remove("hidden")
         })
         document.querySelector(".data-container").innerText = ""
+        if(items.length === 0){
+            while(data.hasChildNodes()){
+                data.removeChild(data.childNodes[0])
+            }
+            return
+        }
         noteCreator("title","contentBody")
         let getId = overview.childNodes[0].id
         // console.log(data,typeof data)
